@@ -5,12 +5,12 @@
 /// @des：移动后回弹停靠的位置
 
 enum SlideStopType {
-  ///停靠在左边
+  ///Pull over to the left
   slideStopLeftType,
 
-  ///停靠在右边
+  ///Pull over to the right
   slideStopRightType,
 
-  ///自动选择
+  ///Automatic selection
   slideStopAutoType,
 }

@@ -5,18 +5,18 @@
 /// @des：
 
 enum FloatingSlideType {
-  ///左上
+  ///Top left
   onLeftAndTop,
 
-  ///左下
+  ///Left bottom
   onLeftAndBottom,
 
-  ///右上
+  ///Right top
   onRightAndTop,
 
-  ///右下
+  ///Right bottom
   onRightAndBottom,
 
-  ///根据 x,y 确定位置
+  ///Determine position from x,y
   onPoint,
 }

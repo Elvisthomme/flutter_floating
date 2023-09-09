@@ -15,8 +15,6 @@ class CustomPage extends StatefulWidget {
 }
 
 class _CustomPageState extends State<CustomPage> {
-
-
   @override
   void initState() {
     super.initState();
@@ -28,7 +26,7 @@ class _CustomPageState extends State<CustomPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("功能页面"),
+        title: const Text("Function page"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -36,7 +34,7 @@ class _CustomPageState extends State<CustomPage> {
             // AwesomeView(),
             GestureDetector(
               child: const Text(
-                "关闭悬浮窗",
+                "Close Hover Window",
                 style: TextStyle(fontSize: 30),
               ),
               onTap: () {
@@ -61,7 +59,7 @@ class _CustomPageState extends State<CustomPage> {
 //
 //
 //
-// // 一定要记住传递你用来注册控制器的`Type`!
+// // Be sure to remember to pass in the file you used to register the controller's`Type`!
 // class AwesomeView extends GetView<AwesomeController> {
 //
 //   @override

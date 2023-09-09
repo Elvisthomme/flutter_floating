@@ -4,39 +4,39 @@
 /// @time：2023/03/28 17:47
 /// @des：
 class ScrollPositionControl {
-  ///滑动时间
-  int timeMillis = 300;
+  /// Slide time
+  int timeMillisecond = 300;
 
-  ///从当前滑动到距离顶部[top]的位置
+  /// Slide from the current position to the distance from top
   Function(double top)? _scrollTop;
 
-  ///从当前滑动到距离左边[left]的位置
+  /// Slide from the current position to the left [left] position
   Function(double left)? _scrollLeft;
 
-  ///从当前滑动到距离右边[right]的位置
+  /// Scroll from the current position to the right.
   Function(double right)? _scrollRight;
 
-  ///从当前滑动到距离底部[bottom]的位置
+  /// Scroll from the current position to the bottom.
   Function(double bottom)? _scrollBottom;
 
-  ///从当前滑动到距离顶部[top]和左边[left]的位置
+  /// Scroll from the current position to the top and left.
   Function(double top, double left)? _scrollTopLeft;
 
-  ///从当前滑动到距离顶部[top]和右边[right]的位置
+  /// Scroll from the current position to the top and the right.
   Function(double bottom, double left)? _scrollBottomLeft;
 
-  ///从当前滑动到距离底部[bottom]和右边[right]的位置
+  /// Scroll from the current position to the bottom [bottom] and the right [right].
   Function(double top, double right)? _scrollTopRight;
 
-  ///从当前滑动到距离底部[bottom]和右边[right]的位置
+  /// Scroll from the current position to the bottom [bottom] and the right [right].
   Function(double bottom, double right)? _scrollBottomRight;
 
-  setScrollTime(int timeMillis) {
-    this.timeMillis = timeMillis;
+  setScrollTime(int timeMillisecond) {
+    this.timeMillisecond = timeMillisecond;
   }
 
   getScrollTime() {
-    return timeMillis;
+    return timeMillisecond;
   }
 
   setScrollTop(Function(double top) scrollTop) {

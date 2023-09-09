@@ -35,82 +35,90 @@ class FloatingPlay extends StatelessWidget {
           blurRadius: 16,
         )
       ]),
-      child: StreamBuilder<String>(builder: (context, snapshot) {
-        return Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Stack(
-                children: [
-                  ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(4)),
-                      child:
-                          Container(color: Colors.grey, width: 56, height: 32)),
-                  Positioned(
-                    right: 2,
-                    top: 2,
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(4, 3, 4, 3),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Text(
-                        "哈哈红红火火恍恍惚惚",
-                        style: TextStyle(fontSize: 8, color: Colors.amber),
+      child: StreamBuilder<String>(
+        builder: (context, snapshot) {
+          return Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                color: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Stack(
+                  children: [
+                    ClipRRect(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(4)),
+                        child: Container(
+                            color: Colors.grey, width: 56, height: 32)),
+                    Positioned(
+                      right: 2,
+                      top: 2,
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(4, 3, 4, 3),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20)),
+                        child: const Text(
+                          "Ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha-ha",
+                          style: TextStyle(fontSize: 8, color: Colors.amber),
+                        ),
                       ),
+                    )
+                  ],
+                ),
+              ),
+              const Expanded(
+                  child: SizedBox(
+                height: 22,
+                child: Text(
+                  'Welcome to the One-Click Hover Window Component',
+                  style: TextStyle(fontSize: 15, color: Colors.redAccent),
+                ),
+              )),
+              StreamBuilder<String>(
+                builder: (context, snapshot) {
+                  return GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {},
+                    child: Container(
+                      height: 32,
+                      width: 24,
+                      margin: const EdgeInsets.symmetric(horizontal: 8),
+                      color: Colors.purple,
                     ),
-                  )
-                ],
+                  );
+                },
+                stream: null,
               ),
-            ),
-            const Expanded(
-                child: SizedBox(
-              height: 22,
-              child: Text('欢迎使用一键式悬浮窗组件',
-                style: TextStyle(fontSize: 15, color: Colors.redAccent),
-              ),
-            )),
-            StreamBuilder<String>(builder: (context, snapshot) {
-              return GestureDetector(
+              GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () {},
                 child: Container(
-                  height: 32,
-                  width: 24,
                   margin: const EdgeInsets.symmetric(horizontal: 8),
-                  color: Colors.purple,
-                ),
-              );
-            }),
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {},
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                child: Container(
-                  color: Colors.pink,
-                  width: 24,
-                  height: 24,
+                  child: Container(
+                    color: Colors.pink,
+                    width: 24,
+                    height: 24,
+                  ),
                 ),
               ),
-            ),
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {},
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Container(
-                  color: Colors.yellow,
-                  width: 24,
-                  height: 24,
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {},
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Container(
+                    color: Colors.yellow,
+                    width: 24,
+                    height: 24,
+                  ),
                 ),
-              ),
-            )
-          ],
-        );
-      }),
+              )
+            ],
+          );
+        },
+        stream: null,
+      ),
     );
   }
 }

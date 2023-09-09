@@ -1,55 +1,55 @@
-import 'package:flutter_floating/floating/assist/Point.dart';
+import 'package:flutter_floating/floating/assist/point.dart';
 
 /// @name：common_control
 /// @package：
 /// @author：345 QQ:1831712732
 /// @time：2023/04/17 20:29
-/// @des： 通用的回调
+/// @des： Generic callbacks
 
 class CommonControl {
   Function(bool isHide)? _hideControl;
   Function(bool isScroll)? _startScroll;
-   Point<double> point =  Point(0, 0);
+  Point<double> point = Point(0, 0);
   Function(Point<double> point)? _floatingPoint;
   bool _initIsScroll = false;
 
-  ///设置 Floating 位置监听
+  ///Setting the Floating position listener
   setFloatingPoint(Function(Point<double> point) floatingPoint) {
     _floatingPoint = floatingPoint;
   }
 
-  /// 获取 Floating 位置
+  /// Get Floating Location
   Point<double> getFloatingPoint() {
     _floatingPoint?.call(point);
     return point;
   }
 
-  ///设置初始化时是否可以滑动
+  ///Sets whether sliding is possible at initialization
   setInitIsScroll(bool initIsScroll) {
     _initIsScroll = initIsScroll;
   }
 
-  ///获取初始化时是否可以滑动状态
+  ///Get the state of whether the initialiZation is slidable or not
   bool getInitIsScroll() {
     return _initIsScroll;
   }
 
-  ///设置是否滑动监听
+  ///Set whether to listen for sliding
   setIsStartScrollListener(Function(bool isScroll) fun) {
     _startScroll = fun;
   }
 
-  ///设置是否滑动
+  ///Set whether to slide
   setIsStartScroll(bool isScroll) {
     _startScroll?.call(isScroll);
   }
 
-  ///设置隐藏状态
+  ///Setting the hidden state
   setFloatingHide(bool isHide) {
     _hideControl?.call(isHide);
   }
 
-  ///设置隐藏监听
+  ///Setting up a hidden listener
   setHideControlListener(Function(bool isHide) hideControl) {
     _hideControl = hideControl;
   }

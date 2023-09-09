@@ -1,50 +1,50 @@
 ### v1.0.8
-增加获取位置的api
-创建 Floating 时可根据自定义的屏幕位置(Point)创建
-修改回调事件中的参数为 Point
-修改部分api，优化代码
+Add api to get position
+When creating Floating, you can create it based on custom screen position (Point).
+Modify the parameter in the callback event to Point
+Modify some api, optimize code
 
 ### v1.0.7
-增加吸附边缘的时候的自定义吸附边缘边距，优化代码逻辑
+Add custom margins when adsorbing edges, optimize code logic.
 
 ### v1.0.6
-增加悬浮窗控制状态，优化代码逻辑
+Add hover window control state, optimize code logic.
 
 ### v1.0.5
-增加自动回弹位置的控制，可自由选择靠左，靠右或者是自动识别
+Add the control of auto rebound position, you can choose to lean left, lean right or auto recognition.
 
 ### v1.0.4
-增加悬浮窗移动 Api，修改bug，提高使用体验
+Add mobile Api for hover window, modify bugs and improve experience.
 
 ### v1.0.3
-修改部分bug，优化代码
+Modify some bugs and optimize code
 
 ### v1.0.2
-修改部分Api，新增对悬浮窗大小改变时悬浮窗位置的适配，优化代码
+Modify some Api, add the adaptation of the position of the hover window when the size of the hover window changes, and optimize the code.
 
 ### v1.0.1
-项目迁移至 flutter3.0，3.0一下可能无法使用，请自行升级flutters SDK
+Migrate the project to flutter3.0, it may not work under 3.0, please upgrade flutters SDK by yourself.
 
 ### v0.1.6
-修复 moveEndListener 无法回调，优化内部逻辑。flutter 3.0以下使用
+Fix moveEndListener can't be called back, optimize internal logic. flutter 3.0 or below to use.
 
 ### v0.1.5
-修复一些已知的问题，提高使用体验
+Fix some known problems, improve the experience.
 
-### v0.1.4
-由于 v0.1.3 版本导致 flutter3.0 以下无法使用，所以，flutter3.0 以下 请使用 v0.1.4，3.0及以上使用 v0.1.3即可
+## v0.1.4
+Due to v0.1.3 version, flutter3.0 or below can't be used, so please use v0.1.4 for flutter3.0 or below, and v0.1.3 for 3.0 and above.
 
 ### v0.1.3
-适配 flutter 3.O，修改一些已知问题
+Adapt to flutter 3.O, fix some known problems.
 
 ### v0.1.2
-修改部分API,优化使用体验
+Modify some APIs to optimize the experience.
 
-### v0.1.1
-修复位置缓存无作用的问题 ,新增边缘吸附的控制 ,优化使用体验...
+## v0.1.1
+Fix the problem that position cache doesn't work, add the control of edge adsorption, optimize the experience...
 
 ### v0.1.0
-修复点击事件的bug ,优化开发体验，自适应子组件的大小，无需手动传入大小 ,其他bug
+Fix the bug of click event ,optimize development experience, adapt the size of sub-component, no need to pass in the size manually ,other bugs...
 
 ### v0.0.1
-一个灵活和强大的悬浮窗口解决方案
+A flexible and powerful hover window solution

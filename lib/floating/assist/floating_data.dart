@@ -1,4 +1,4 @@
-import 'package:flutter_floating/floating/assist/Point.dart';
+import 'package:flutter_floating/floating/assist/point.dart';
 
 import 'floating_slide_type.dart';
 
@@ -6,7 +6,7 @@ import 'floating_slide_type.dart';
 /// @package：
 /// @author：345 QQ:1831712732
 /// @time：2022/02/10 17:35
-/// @des：悬浮窗数据记录
+/// @des：Hover window data logging
 
 class FloatingData {
   double? left;
@@ -23,6 +23,13 @@ class FloatingData {
 
   FloatingSlideType slideType;
 
-  FloatingData(this.slideType,
-      {this.left, this.top, this.right, this.bottom,this.point, this.snapToEdgeSpace = 0});
+  FloatingData(
+    this.slideType, {
+    this.left,
+    this.top,
+    this.right,
+    this.bottom,
+    this.point,
+    this.snapToEdgeSpace = 0,
+  });
 }

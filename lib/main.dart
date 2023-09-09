@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
 
-    //因为获取状态栏高度，所以延时一帧
+    //Delayed by one frame because it gets the height of the status bar
     floatingOne = floatingManager.createFloating(
         "1",
         Floating(const FloatingIcon(),
@@ -75,15 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
     var twoListener = FloatingEventListener()
       ..closeListener = () {
         // var point = floatingTwo.getFloatingPoint();
-        // print('关闭  ${point.x}      --         ${point.y}');
+        // print('Close  ${point.x}      --         ${point.y}');
       }
       ..hideFloatingListener = () {
         // var point = floatingTwo.getFloatingPoint();
-        // print('隐藏  ${point.x}      --         ${point.y}');
+        // print('Hide  ${point.x}      --         ${point.y}');
       }
       ..moveEndListener = (point) {
         // var point = floatingTwo.getFloatingPoint();
-        // print('移动结束  ${point.x}      --         ${point.y}');
+        // print('End move  ${point.x}      --         ${point.y}');
       };
     floatingTwo.addFloatingListener(twoListener);
   }
@@ -110,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               const SizedBox(height: 30),
               ButtonWidget(
-                "显示/关闭左上角没有回弹的悬浮窗",
+                "Show/close the hover window in the upper left corner that doesn't bounce back",
                 () {
                   var floating = floatingManager.getFloating("1");
                   floating.isShowing
@@ -118,7 +118,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       : floating.open(context);
                 },
               ),
-              ButtonWidget("显示右上角悬浮窗", () {
+              ButtonWidget("Shows a floating window in the upper right corner",
+                  () {
                 if (!isOpen) {
                   floatingTwo.open(context);
                   isOpen = true;
@@ -126,10 +127,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   floatingTwo.showFloating();
                 }
               }),
-              ButtonWidget("隐藏右上角悬浮窗", () {
+              ButtonWidget("Hide the upper-right corner hover window", () {
                 floatingTwo.hideFloating();
               }),
-              ButtonWidget("添加没有移动动画的悬浮窗", () {
+              ButtonWidget("Adding a hover window without motion animation",
+                  () {
                 floatingManager
                     .createFloating(
                         DateTime.now().millisecondsSinceEpoch,
@@ -142,7 +144,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             top: floatingManager.floatingSize() * 80))
                     .open(context);
               }),
-              ButtonWidget("添加禁止滑动到状态栏和底部的悬浮窗", () {
+              ButtonWidget(
+                  "Add hover window to disable swiping to status bar and bottom",
+                  () {
                 floatingManager
                     .createFloating(
                         DateTime.now().millisecondsSinceEpoch,
@@ -150,12 +154,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             slideType: FloatingSlideType.onRightAndBottom,
                             right: 100,
                             bottom: floatingManager.floatingSize() * 80,
-                            //禁止滑动到状态栏
+                            //Disable swiping to the status bar
                             slideTopHeight: MediaQuery.of(context).padding.top,
                             slideBottomHeight: 60))
                     .open(context);
               }),
-              ButtonWidget("跳转页面", () => _startCustomPage()),
+              ButtonWidget("jump page", () => _startCustomPage()),
             ],
           ),
         ),
@@ -163,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _startCustomPage,
         tooltip: 'Increment',
-        child: const Text("跳"),
+        child: const Text("skip over"),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

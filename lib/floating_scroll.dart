@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'floating/manager/floating_manager.dart';
@@ -17,7 +16,6 @@ class FloatingScroll extends StatefulWidget {
 }
 
 class _FloatingScrollState extends State<FloatingScroll> {
-  int _counter = 0;
   double width = 80;
   double height = 80;
   double x = 30;
@@ -30,7 +28,7 @@ class _FloatingScrollState extends State<FloatingScroll> {
         onTap: () {
           if (x > 240) {
             x = 30;
-          }else{
+          } else {
             x = x + 30;
           }
           var floating = floatingManager.getFloating("2");
@@ -43,9 +41,9 @@ class _FloatingScrollState extends State<FloatingScroll> {
               color: Colors.yellow, borderRadius: BorderRadius.circular(50)),
           alignment: Alignment.center,
           duration: const Duration(milliseconds: 300),
-          child: Text(
-            '点击移动$_counter',
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          child: const Text(
+            'Click to move',
+            style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
       ),

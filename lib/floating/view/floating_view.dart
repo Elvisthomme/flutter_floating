@@ -4,7 +4,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_floating/floating/assist/slide_stop_type.dart';
 import 'package:flutter_floating/floating/control/common_control.dart';
 
-import '../assist/Point.dart';
+import '../assist/point.dart';
 import '../assist/floating_data.dart';
 import '../assist/floating_slide_type.dart';
 import '../control/scroll_position_control.dart';
@@ -320,7 +320,8 @@ class _FloatingViewState extends State<FloatingView>
       var control = widget._scrollPositionControl;
       _scrollController.dispose();
       _scrollController = AnimationController(
-          duration: Duration(milliseconds: control.timeMillis), vsync: this);
+          duration: Duration(milliseconds: control.timeMillisecond),
+          vsync: this);
       var t = Tween(begin: _top, end: y).animate(_scrollController);
       var l = Tween(begin: _left, end: x).animate(_scrollController);
       _scrollController.addListener(() {
@@ -340,7 +341,8 @@ class _FloatingViewState extends State<FloatingView>
       var control = widget._scrollPositionControl;
       _scrollController.dispose();
       _scrollController = AnimationController(
-          duration: Duration(milliseconds: control.timeMillis), vsync: this);
+          duration: Duration(milliseconds: control.timeMillisecond),
+          vsync: this);
       var anim = Tween(begin: _left, end: left).animate(_scrollController);
       anim.addListener(() {
         _left = anim.value.toDouble();
@@ -358,7 +360,8 @@ class _FloatingViewState extends State<FloatingView>
       var control = widget._scrollPositionControl;
       _scrollController.dispose();
       _scrollController = AnimationController(
-          duration: Duration(milliseconds: control.timeMillis), vsync: this);
+          duration: Duration(milliseconds: control.timeMillisecond),
+          vsync: this);
       var anim = Tween(begin: _top, end: top).animate(_scrollController);
       anim.addListener(() {
         _top = anim.value.toDouble();

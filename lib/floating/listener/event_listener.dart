@@ -1,5 +1,4 @@
-
-import 'package:flutter_floating/floating/assist/Point.dart';
+import 'package:flutter_floating/floating/assist/point.dart';
 
 /// @name：FloatingListener
 /// @package：
@@ -8,27 +7,27 @@ import 'package:flutter_floating/floating/assist/Point.dart';
 /// @des：
 
 class FloatingEventListener {
-  ///打开悬浮窗
+  ///Called when opening the Floating window
   Function? openListener;
 
-  ///关闭悬浮窗
+  ///Called when closing the Floating window
   Function? closeListener;
 
-  ///影藏悬浮窗
+  ///Called when hiding the Floating Window
   Function? hideFloatingListener;
 
-  ///显示悬浮窗
+  ///Called when showing Floating Window
   Function? showFloatingListener;
 
-  ///手指按下
+  ///Called when pressing down the Floating Window
   Function(Point<double>)? downListener;
 
-  ///手指抬起
+  /// Called when pressing up the Floating Window
   Function(Point<double>)? upListener;
 
-  ///手指移动
+  /// Called when moving the Floating Window
   Function(Point<double>)? moveListener;
 
-  ///手指移动结束
+  /// Called on moving end the Floating Window
   Function(Point<double>)? moveEndListener;
 }

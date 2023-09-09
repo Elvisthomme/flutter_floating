@@ -6,7 +6,7 @@ import '../floating.dart';
 /// @package：
 /// @author：345 QQ:1831712732
 /// @time：2022/02/11 14:50
-/// @des：[Floating] 管理者
+/// @des：[Floating] administrator
 
 FloatingManager floatingManager = FloatingManager();
 
@@ -28,7 +28,7 @@ class FloatingManager {
     };
   }
 
-  ///创建一个可全局管理的 [Floating]
+  ///Creating a globally manageable [Floating]
   Floating createFloating(Object key, Floating floating) {
     bool contains = _floatingCache.containsKey(key);
     if (!contains) {
@@ -37,25 +37,25 @@ class FloatingManager {
     return _floatingCache[key]!;
   }
 
-  ///根据 [key] 拿到对应的 [Floating]
+  ///Get the corresponding [Floating] from [key].
   Floating getFloating(Object key) {
     return _floatingCache[key]!;
   }
 
-  ///关闭 [key] 对应的 [Floating]
+  ///Close [Floating] for [key].
   closeFloating(Object key) {
     var floating = _floatingCache[key];
     floating?.close();
     _floatingCache.remove(key);
   }
 
-  ///关闭所有的 [Floating]
+  ///Close all [Floating]
   closeAllFloating() {
     _floatingCache.forEach((key, value) => value.close());
     _floatingCache.clear();
   }
 
-  ///悬浮窗数量
+  ///Number of floating windows
   int floatingSize() {
     return _floatingCache.length;
   }

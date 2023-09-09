@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'floating/manager/floating_manager.dart';
 
 /// @name：floating_increment
 /// @package：
@@ -29,14 +26,14 @@ class _FloatingIncrementState extends State<FloatingIncrement> {
       child: GestureDetector(
         onTap: () {
           setState(() {
-          if (width < 200) {
-            width = width + x;
-            height = height + x;
-          } else {
-            width = width - x;
-            height = height - x;
-          }
-          _counter++;
+            if (width < 200) {
+              width = width + x;
+              height = height + x;
+            } else {
+              width = width - x;
+              height = height - x;
+            }
+            _counter++;
           });
         },
         child: AnimatedContainer(
@@ -47,7 +44,7 @@ class _FloatingIncrementState extends State<FloatingIncrement> {
           alignment: Alignment.center,
           duration: const Duration(milliseconds: 300),
           child: Text(
-            '放大缩小$_counter',
+            'zoom in and out$_counter',
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
