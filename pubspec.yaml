@@ -1,5 +1,5 @@
 name: flutter_floating
-description: Flutter免权限悬浮窗，支持全局、单页面悬浮、支持边缘吸附、位置保存、上下可滑动区域控制以及屏幕旋转窗口化后的位置修复等等。
+description: Flutter privilege-free floating window , support for global , single-page hover , support for edge adsorption , position preservation , up and down the slidable area control and screen rotation after the windowing of the position of the repair and so on.
 version: 1.0.8
 homepage: https://github.com/Elvisthomme/flutter_floating
 
