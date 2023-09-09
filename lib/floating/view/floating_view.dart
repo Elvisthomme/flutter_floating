@@ -15,7 +15,7 @@ import '../utils/floating_log.dart';
 /// @package：
 /// @author：345 QQ:1831712732
 /// @time：2022/02/09 22:33
-/// @des：悬浮窗容器
+/// @des：floating window containers
 
 class FloatingView extends StatefulWidget {
   final Widget child;
@@ -27,25 +27,25 @@ class FloatingView extends StatefulWidget {
   final FloatingLog _log;
   final double slideTopHeight;
   final double slideBottomHeight;
-  final double moveOpacity; // 悬浮组件透明度
+  final double moveOpacity; // Floating Component Transparency
   final SlideStopType slideStopType;
   final CommonControl _commonControl;
 
   const FloatingView(
-      this.child,
-      this.floatingData,
-      this.isPosCache,
-      this.isSnapToEdge,
-      this._listener,
-      this._scrollPositionControl,
-      this._commonControl,
-      this._log,
-      {Key? key,
-      this.slideTopHeight = 0,
-      this.slideBottomHeight = 0,
-      this.moveOpacity = 0.3,
-      this.slideStopType = SlideStopType.slideStopAutoType})
-      : super(key: key);
+    this.child,
+    this.floatingData,
+    this.isPosCache,
+    this.isSnapToEdge,
+    this._listener,
+    this._scrollPositionControl,
+    this._commonControl,
+    this._log, {
+    Key? key,
+    this.slideTopHeight = 0,
+    this.slideBottomHeight = 0,
+    this.moveOpacity = 0.3,
+    this.slideStopType = SlideStopType.slideStopAutoType,
+  }) : super(key: key);
 
   @override
   _FloatingViewState createState() => _FloatingViewState();
@@ -61,31 +61,31 @@ class _FloatingViewState extends State<FloatingView>
 
   late FloatingData _floatingData;
 
-  final double _defaultWidth = 100; //默认宽度
+  final double _defaultWidth = 100; //Default width
 
-  final double _defaultHeight = 100; //默认高度
+  final double _defaultHeight = 100; //Default height
 
   double _width = 0;
 
   double _height = 0;
 
-  double _parentWidth = 0; //记录屏幕或者父组件宽度
-  double _parentHeight = 0; //记录屏幕或者父组件宽度
+  double _parentWidth = 0; //Record screen or parent component width
+  double _parentHeight = 0; //Record screen or parent component height
 
-  double _opacity = 1.0; // 悬浮组件透明度
+  double _opacity = 1.0; // Floating Component Transparency
 
   bool _isInitPosition = false;
 
   late Widget _contentWidget;
 
-  late AnimationController _slideController; //动画控制器
-  late Animation<double> _slideAnimation; //动画
+  late AnimationController _slideController; //Animation Controller
+  late Animation<double> _slideAnimation; //Animation
 
-  late AnimationController _scrollController; //动画控制器
+  late AnimationController _scrollController; //Animation Controller
 
   bool isHide = false;
 
-  bool _isStartScroll = true; //是否启动悬浮窗滑动
+  bool _isStartScroll = true; //Whether to activate the floating window slide
 
   @override
   void initState() {
@@ -145,7 +145,7 @@ class _FloatingViewState extends State<FloatingView>
       behavior: HitTestBehavior.opaque,
       onTapDown: (details) => _notifyDown(_left, _top),
       onTapCancel: () => _notifyUp(_left, _top),
-      //滑动
+      //Sliding movement
       onPanUpdate: (DragUpdateDetails details) {
         if (!_checkStartScroll()) return;
         _left += details.delta.dx;
@@ -154,14 +154,14 @@ class _FloatingViewState extends State<FloatingView>
         _changePosition();
         _notifyMove(_left, _top);
       },
-      //滑动结束
+      //End of slide
       onPanEnd: (DragEndDetails details) {
         if (!_checkStartScroll()) return;
         _changePosition();
-        //停止后靠边操作
+        //Pull over after stopping
         _animateMovePosition();
       },
-      //滑动取消
+      //When slide is cancelled
       onPanCancel: () {
         if (!_checkStartScroll()) return;
         _changePosition();
@@ -190,7 +190,7 @@ class _FloatingViewState extends State<FloatingView>
     );
   }
 
-  ///floating 宽高是否改变，true 表示改变
+  ///floating Whether the width and height change, true means change.
   bool _isFloatingChangeSize() {
     renderBox ??=
         _floatingGlobalKey.currentContext?.findRenderObject() as RenderBox?;
@@ -206,11 +206,11 @@ class _FloatingViewState extends State<FloatingView>
     _height = renderBox?.size.height ?? _defaultHeight;
   }
 
-  ///边界判断
+  ///Boundary judgement
   _changePosition() {
-    //不能超过左边界
+    //Cannot exceed the left border
     if (_left < 0) _left = 0;
-    //不能超过右边界
+    //Cannot exceed the right border
     var w = _parentWidth;
     if (_left >= w - _width) {
       _left = w - _width;
@@ -225,7 +225,7 @@ class _FloatingViewState extends State<FloatingView>
     });
   }
 
-  ///中线回弹动画
+  ///Midline rebound animation
   _animateMovePosition() {
     if (!widget.isSnapToEdge) {
       _recoverOpacity();
@@ -238,39 +238,45 @@ class _FloatingViewState extends State<FloatingView>
 
     switch (widget.slideStopType) {
       case SlideStopType.slideStopLeftType:
-        needMoveLength = _left; //靠左边的距离
-        toPositionX = 0 + _floatingData.snapToEdgeSpace; //回到左边缘距离
+        needMoveLength = _left; //Distance to the left
+        toPositionX =
+            0 + _floatingData.snapToEdgeSpace; //Back to left margin distance
         break;
       case SlideStopType.slideStopRightType:
-        needMoveLength = (_parentWidth - _left - _width); //靠右边的距离
-        toPositionX =
-            _parentWidth - _width - _floatingData.snapToEdgeSpace; //回到右边缘距离
+        needMoveLength =
+            (_parentWidth - _left - _width); //Distance to the right
+        toPositionX = _parentWidth -
+            _width -
+            _floatingData.snapToEdgeSpace; //Back to right edge distance
         break;
       case SlideStopType.slideStopAutoType:
-        double centerX = _left + _width / 2.0; //中心点位置
+        double centerX = _left + _width / 2.0; //center position
         if (centerX <= _parentWidth / 2) {
-          needMoveLength = _left; //靠左边的距离
+          needMoveLength = _left; //Distance to the left
         } else {
-          needMoveLength = (_parentWidth - _left - _width); //靠右边的距离
+          needMoveLength =
+              (_parentWidth - _left - _width); //Distance to the right
         }
         if (centerX <= _parentWidth / 2.0) {
-          toPositionX = 0 + _floatingData.snapToEdgeSpace; //回到左边缘
-        } else {
           toPositionX =
-              _parentWidth - _width - _floatingData.snapToEdgeSpace; //回到右边缘
+              0 + _floatingData.snapToEdgeSpace; //Back to the left edge
+        } else {
+          toPositionX = _parentWidth -
+              _width -
+              _floatingData.snapToEdgeSpace; //Back to the right edge
         }
         break;
     }
 
-    //根据滑动距离计算滑动时间
+    //Calculation of sliding time based on sliding distance
     double parent = (needMoveLength / (_parentWidth / 2.0));
     int time = (500 * parent).ceil();
 
-    //执行动画
+    //Execute the animation
     _animationSlide(_left, toPositionX, time, () {
-      //恢复透明度
+      //Restoration of transparency
       _recoverOpacity();
-      //结束后进行通知
+      //Notification upon completion
       _notifyMoveEnd(_left, _top);
     });
   }
@@ -282,7 +288,7 @@ class _FloatingViewState extends State<FloatingView>
         duration: Duration(milliseconds: time), vsync: this);
     _slideAnimation =
         Tween(begin: left, end: toPositionX * 1.0).animate(_slideController);
-    //回弹动画
+    //bounce animation
     _slideAnimation.addListener(() {
       _left = _slideAnimation.value.toDouble();
       setState(() {
@@ -374,7 +380,7 @@ class _FloatingViewState extends State<FloatingView>
     }
   }
 
-  ///恢复透明度
+  ///Restoration of transparency
   _recoverOpacity() {
     if (_opacity != 1.0) {
       setState(() => _opacity = 1.0);
@@ -382,9 +388,9 @@ class _FloatingViewState extends State<FloatingView>
   }
 
   _initPosition() {
-    //使用缓存
+    //Using Cache
     if (widget.isPosCache) {
-      //如果之前没有缓存数据
+      //If there is no previously cached data
       if (_floatingData.top == null || _floatingData.left == null) {
         setSlide();
       } else {
@@ -396,14 +402,14 @@ class _FloatingViewState extends State<FloatingView>
     _isInitPosition = true;
   }
 
-  ///检测是否开启滑动
+  ///Detect if sliding is on
   bool _checkStartScroll() {
     return _isStartScroll;
   }
 
-  ///判断屏幕是否发生改变
+  ///Determine if the screen has changed
   _checkScreenChange() {
-    //如果屏幕宽高为0，直接退出
+    //If the screen width and height is 0, just exit
     if (_parentWidth == 0 || _parentHeight == 0) return;
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
@@ -464,7 +470,7 @@ class _FloatingViewState extends State<FloatingView>
     _saveCacheData(_left, _top);
   }
 
-  ///清除缓存数据
+  ///Clearing cached data
   _clearCacheData() {
     _floatingData.left = null;
     _floatingData.top = null;
@@ -472,7 +478,7 @@ class _FloatingViewState extends State<FloatingView>
     _floatingData.bottom = null;
   }
 
-  ///保存缓存位置
+  ///Save cache location
   _saveCacheData(double left, double top) {
     if (widget.isPosCache) {
       _floatingData.left = left;
@@ -480,7 +486,7 @@ class _FloatingViewState extends State<FloatingView>
     }
   }
 
-  ///设置缓存数据
+  ///Setting Cached Data
   _setCacheData() {
     _top = _floatingData.top ?? 0;
     _left = _floatingData.left ?? 0;
@@ -494,28 +500,28 @@ class _FloatingViewState extends State<FloatingView>
   }
 
   _notifyMove(double x, double y) {
-    widget._log.log("移动 X:$x Y:$y");
+    widget._log.log("Movement X:$x Y:$y");
     for (var element in widget._listener) {
       element.moveListener?.call(Point(x, y));
     }
   }
 
   _notifyMoveEnd(double x, double y) {
-    widget._log.log("移动结束 X:$x Y:$y");
+    widget._log.log("End of movement X:$x Y:$y");
     for (var element in widget._listener) {
       element.moveEndListener?.call(Point(x, y));
     }
   }
 
   _notifyDown(double x, double y) {
-    widget._log.log("按下 X:$x Y:$y");
+    widget._log.log("Press down X:$x Y:$y");
     for (var element in widget._listener) {
       element.downListener?.call(Point(x, y));
     }
   }
 
   _notifyUp(double x, double y) {
-    widget._log.log("抬起 X:$x Y:$y");
+    widget._log.log("Press X:$x Y:$y");
     for (var element in widget._listener) {
       element.upListener?.call(Point(x, y));
     }
